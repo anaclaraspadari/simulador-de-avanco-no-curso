@@ -23,7 +23,6 @@ function App() {
     useEffect(() => {
         console.log("Os dados do estudante mudaram");
         setLoader(false);
-        //console.log({ dadosEstudante });
     }, [dadosEstudante])
 
 
@@ -38,7 +37,6 @@ function App() {
             {(sems!==null && ano!==null) &&
                 titulosdiv.map((semestre, index)=>(
                   <>
-                    {/* {console.log(index)} */}
                         { (sems==='1')? 
                             <h2 key={index}>{parseInt((index/2)+anoescolhido)}/{(semestre = index % 2 === 0 ? '1' : '2')+"º Semestre"}</h2>
                         : 

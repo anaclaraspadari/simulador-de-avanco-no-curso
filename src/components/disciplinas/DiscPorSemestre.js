@@ -5,19 +5,7 @@ import data from '../../data/Disciplinas.json'
 
 function DiscPorSemestre({ nsemestre, dados, setDados }){
 
-    // const [dadosEstudante, setDadosEstudante] = useState(data);
-    
-    /*
-    const discdiv=new Array(9)
-    for(let k=0;k<9;k++){
-        discdiv.push(k);
-    }
-    */
-
     useEffect(() => {
-        //console.log("Os dados do estudante mudaram");
-        
-        //console.log({ dados });
     }, [dados])
 
     return(

@@ -3,8 +3,6 @@ import {AiOutlineArrowDown} from 'react-icons/ai'
 
 function Disciplina({dados, semsatual, dadosCompletos, setDados}){
     const transfereDisciplina = () => {
-
-        //console.log("A disciplina " + dados.codigo + " esta no semestre " + semsatual + " e deve ir para o proximo");
         
         // copia os dados completos
         const novoDado = { ...dadosCompletos }; 
