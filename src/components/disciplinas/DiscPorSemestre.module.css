@@ -1,0 +1,23 @@
+.SemestreDiv{
+    min-width: 500px; 
+    /* border: 10px solid black; */
+    background-color: rgb(91, 188, 248);
+    border-radius: 10px; 
+    padding: 3em; 
+    margin: 20px; 
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+}
+
+.DisciplinaDiv{
+    border-radius: 10px;
+    padding: 1em;
+    margin-left: 20px;
+    min-width: 150px;
+    min-height: 80px;
+    background-color: #172496;
+    display: grid;
+}
