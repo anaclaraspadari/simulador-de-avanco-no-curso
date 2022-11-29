@@ -3,32 +3,38 @@
         {
             "nome": "Cálculo 1",
             "codigo": "11",
-            "semestre":1
+            "semestre":1,
+            "dependencia":[]
         },
         {
             "nome": "Álgebra Linear e Geometria Analítica 1",
             "codigo": "12",
-            "semestre": 1
+            "semestre": 1,
+            "dependencia":[]
         },
         {
             "nome": "Desenho Técnico e Geometria Descritiva 1",
             "codigo": "13",
-            "semestre": 1
+            "semestre": 1,
+            "dependencia":[]
         },
         {
             "nome": "Física Geral e Experimental 1",
             "codigo": "14",
-            "semestre": 1
+            "semestre": 1,
+            "dependencia":[]
         },
         {
             "nome": "Química Geral",
             "codigo": "15",
-            "semestre": 1
+            "semestre": 1,
+            "dependencia":[]
         },
         {
             "nome": "Introdução à Eng. Mecânica",
             "codigo": "16",
-            "semestre": 1
+            "semestre": 1,
+            "dependencia":[]
         }
     ],
     "sems1":[

@@ -1,40 +1,52 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './DiscPorSemestre.module.css';
 import {AiOutlineArrowDown} from 'react-icons/ai'
 
 function Disciplina({dados, semsatual, dadosCompletos, setDados}){
-        
-    // copia os dados completos
+
     const novoDado = { ...dadosCompletos };
-    const [disciplinas, setDisciplinas]=useState({});
+    let dadoTransferido=false;
+    let indexDado=novoDado['sems'+semsatual].indexOf(dados);
+    const [dependencias, setDependencias]=useState({});
 
     const transfereDisciplina = () => {
-
-        // REMOVER DISCIPLINA ATUAL DESTE SEMESTRE
-        let dadoTransferido=false;
         if(dadoTransferido===false){
             novoDado['sems' + (semsatual+1)].push(dados);
             dadoTransferido=true;
+            armazenaDependencias();
         }
-
         if (dadoTransferido===true){
-
-            let indexDado=novoDado['sems'+semsatual].indexOf(dados);
             novoDado['sems'+semsatual].splice(indexDado, 1);
-
-            for(let key of Object.keys(novoDado)){
-                console.log(novoDado[key]);    
-                setDisciplinas(novoDado);
-                console.log(disciplinas);
-            }
-            dadoTransferido=false;
             setDados(novoDado);
         }
     }
 
-    
-    // EMPURRAR AS DISCIPLINAS QUE DEPENDEM DESSA PARA O PROXIMO SEMESTRE
+    useRef(()=>{
+        dadoTransferido=false;
+        indexDado=novoDado['sems'+semsatual].indexOf(dados);
+    })
 
+    const armazenaDependencias=()=>{
+        transfereDisciplina().then((discdep)=>{
+            for(let i of novoDado){
+                for(let j of novoDado[i]){
+                    for(let k of novoDado[i+1][j].dependencias){
+                        if(novoDado[i+1][j].dependencias[k]===indexDado){
+                            discdep=novoDado[i+1][j][k];
+                            setDependencias({nomedisc: novoDado[indexDado], discdependencias: discdep});
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    
+    console.log(dependencias);
+
+    useEffect(()=>{
+        setDependencias({nomedisc: undefined, discdependencias: []});
+    },[])
 
 
     return(
