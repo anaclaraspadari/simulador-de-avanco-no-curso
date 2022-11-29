@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import styles from './DiscPorSemestre.module.css';
 import {AiOutlineArrowDown} from 'react-icons/ai'
 
 function Disciplina({dados, semsatual, dadosCompletos, setDados}){
-    const transfereDisciplina = () => {
         
-        // copia os dados completos
-        const novoDado = { ...dadosCompletos }; 
+    // copia os dados completos
+    const novoDado = { ...dadosCompletos };
+    const [disciplinas, setDisciplinas]=useState({});
+
+    const transfereDisciplina = () => {
 
         // REMOVER DISCIPLINA ATUAL DESTE SEMESTRE
         let dadoTransferido=false;
@@ -13,22 +16,26 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
             novoDado['sems' + (semsatual+1)].push(dados);
             dadoTransferido=true;
         }
+
         if (dadoTransferido===true){
+
             let indexDado=novoDado['sems'+semsatual].indexOf(dados);
-            console.log(indexDado);
             novoDado['sems'+semsatual].splice(indexDado, 1);
-            
+
+            for(let key of Object.keys(novoDado)){
+                console.log(novoDado[key]);    
+                setDisciplinas(novoDado);
+                console.log(disciplinas);
+            }
             dadoTransferido=false;
             setDados(novoDado);
         }
-        
-        // EMPURRAR AS DISCIPLINAS QUE DEPENDEM DESSA PARA O PROXIMO SEMESTRE
-
-        
-        
-        //console.log({ novoDado });
-
     }
+
+    
+    // EMPURRAR AS DISCIPLINAS QUE DEPENDEM DESSA PARA O PROXIMO SEMESTRE
+
+
 
     return(
         <>

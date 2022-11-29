@@ -3,7 +3,7 @@ import Disciplina from './Disciplina.js';
 import styles from './DiscPorSemestre.module.css';
 import data from '../../data/Disciplinas.json'
 
-function DiscPorSemestre({ nsemestre, dados, setDados }){
+function DiscPorSemestre({ contador, nsemestre, dados, setDados }){
 
     useEffect(() => {
     }, [dados])

@@ -4,7 +4,7 @@ import DiscPorSemestre from './components/disciplinas/DiscPorSemestre';
 import Form from './components/form/Form';
 import data from './data/Disciplinas.json';
 
-function App() {
+function App({contador}) {
 
     const [ano, setAno] = useState(null);
     const [sems, setSemestre] = useState(null);
@@ -13,7 +13,7 @@ function App() {
     
     
     const titulosdiv=[]
-    let contador=10;
+    contador=10;
     for(let i=0;i<contador;i++){
         titulosdiv.push(i);
     }
@@ -25,6 +25,7 @@ function App() {
         setLoader(false);
     }, [dadosEstudante])
 
+    
 
     return (
         <div className="App">
