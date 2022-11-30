@@ -29,19 +29,30 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
     const armazenaDependencias=()=>{
         transfereDisciplina().then((discdep)=>{
             for(let i of novoDado){
+
+                console.log("novoDado[i]:")
+                console.log(novoDado[i])
+
                 for(let j of novoDado[i]){
-                    for(let k of novoDado[i+1][j].dependencias){
-                        if(novoDado[i+1][j].dependencias[k]===indexDado){
-                            discdep=novoDado[i+1][j][k];
+
+                    console.log("novoDado[i][j]:")
+                    console.log(novoDado[i+1][j+1])
+
+                    for(let k of novoDado[i+1][j+1].dependencia){
+
+                        //tentando pegar as dependencias
+                        console.log("novoDado[i][j].dependencias:")
+                        console.log(novoDado[i+1][j+1].dependencia[k]);
+                        
+                        if(novoDado[i+1][j+1].dependencia[k]===indexDado){
+                            discdep=novoDado[i+1][j+1][k];
                             setDependencias({nomedisc: novoDado[indexDado], discdependencias: discdep});
                         }
                     }
                 }
             }
         });
-    }
-
-    
+    }    
     console.log(dependencias);
 
     useEffect(()=>{
