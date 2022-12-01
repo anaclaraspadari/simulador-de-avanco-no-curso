@@ -27,37 +27,59 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
     })
 
     const armazenaDependencias=()=>{
-        transfereDisciplina().then((discdep)=>{
-            for(let i of novoDado){
+        console.log("chamou a função armazenaDependencias");
+        let discdep=[]
+        
+        console.log(novoDado)
+            console.log("chamou a função armazenaDependencias pela 2 vez");
+            const pegaDiscs=Object.values(novoDado);
 
-                console.log("novoDado[i]:")
-                console.log(novoDado[i])
+                console.log("chamou a função armazenaDependencias pela 3 vez");
 
-                for(let j of novoDado[i]){
+                console.log("pegaDiscs:")
+                console.log(pegaDiscs);
 
-                    console.log("novoDado[i][j]:")
-                    console.log(novoDado[i+1][j+1])
+                for(let i=0;i<pegaDiscs.length;i++){
 
-                    for(let k of novoDado[i+1][j+1].dependencia){
+                    console.log("chamou a função armazenaDependencias pela 4 vez");
+                    const percorreDiscs=Object.values(pegaDiscs[i])
+                    console.log("percorreDiscs:")
+                    console.log(percorreDiscs);
 
-                        //tentando pegar as dependencias
-                        console.log("novoDado[i][j].dependencias:")
-                        console.log(novoDado[i+1][j+1].dependencia[k]);
-                        
-                        if(novoDado[i+1][j+1].dependencia[k]===indexDado){
-                            discdep=novoDado[i+1][j+1][k];
-                            setDependencias({nomedisc: novoDado[indexDado], discdependencias: discdep});
-                        }
+                    for(let j=0; j<percorreDiscs.length;j++){
+                        console.log("chamou a função armazenaDependencias pela 5 vez");
+                        const percorreCadaDisc=Object.entries(percorreDiscs[j])
+                        console.log("percorreCadaDisc:")
+                        console.log(percorreCadaDisc);
                     }
+
                 }
-            }
-        });
-    }    
-    console.log(dependencias);
+
+
+
+                // for(let j of Object.keys(novoDado[i])){
+
+                
+
+                //     for(let k of novoDado[i+1][j+1].dependencia){
+
+                //         //tentando pegar as dependencias
+                //         console.log("novoDado[i][j].dependencias:")
+                //         console.log(novoDado[i+1][j+1].dependencia[k]);
+                        
+                //         if(novoDado[i+1][j+1].dependencia[k]===indexDado){
+                //             discdep=novoDado[i+1][j+1].dependencia[k];
+                //         }
+                //     }
+                }
+            
+            //(setDependencias({nomedisc: novoDado[indexDado], discdependencias: discdep}));
+
+    //console.log(dependencias);
 
     useEffect(()=>{
         setDependencias({nomedisc: undefined, discdependencias: []});
-    },[])
+    },[]);
 
 
     return(
