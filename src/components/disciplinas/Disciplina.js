@@ -54,31 +54,39 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
             dados
         });
 
-        let codTransferido = dados.codigo;
-
-
-        //for (let semestreVerificar = 0; semestreVerificar < 10; semestreVerificar++){
-        let semestreVerificar = dados.semestre;
-
-        const novoSemestre = novoDado['sems' + (semestreVerificar)];
-        console.log({
-            novoSemestre
-        });
-
-        // console.log(`${semestreVerificar} < ${dados['sems'+semsatual][indexDado].semestre}`);
-        // let disciplinaAdiantada = semestreVerificar < dados['sems'+semsatual][indexDado].semestre;
-
-        novoSemestre.forEach(disc => {
-            if (disc.dependencia.includes(codTransferido)) {
-                console.log('DISC ' +disc.nome + ' depende da disciplina alterada');
-                disc.cor = 'red';
-                codTransferido = disc.codigo; // PODE TER UM ARRAY DE DEPENDENCIAS
-                
-            }
-        });
-
         
-        //}
+
+        for (let semestreVerificar = 0; semestreVerificar < 10; semestreVerificar++){
+            
+            // console.log("semestreVerificar:");
+            // console.log(semestreVerificar);
+
+            const novoSemestre = novoDado['sems' + (semestreVerificar)];
+            console.log({
+                novoSemestre
+            });
+
+            // console.log("novoSemestre[0].dependencia");
+            // console.log(novoSemestre[0].dependencia);
+
+            // const percorreNovoSemestre=Object.values(novoSemestre);
+            // console.log("percorreNovoSemestre:");
+            // console.log({percorreNovoSemestre});
+
+            // console.log(`${semestreVerificar} < ${dados['sems'+semsatual][indexDado].semestre}`);
+            // let disciplinaAdiantada = semestreVerificar < dados['sems'+semsatual][indexDado].semestre;
+
+            let codTransferido = dados.codigo;
+
+            novoSemestre.forEach(disc => {
+                if (disc.dependencia.includes(codTransferido)) {
+                    console.log('DISC ' +disc.nome + ' depende da disciplina alterada');
+                    disc.cor = 'red';
+                    codTransferido = disc.codigo; // PODE TER UM ARRAY DE DEPENDENCIAS
+                    
+                }
+            });
+        }
         
         // setDados(novoDado);
 
