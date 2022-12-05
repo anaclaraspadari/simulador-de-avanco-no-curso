@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './DiscPorSemestre.module.css';
-import {AiOutlineArrowDown} from 'react-icons/ai'
+import {AiOutlineArrowDown, AiOutlineArrowUp} from 'react-icons/ai'
 
 function Disciplina({dados, semsatual, dadosCompletos, setDados}){
 
@@ -10,11 +10,25 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
     const [dependencias, setDependencias]=useState({});
     const [discTransferida, setDiscTransferida] = useState(null);
 
-    const transfereDisciplina = () => {
+    const transfereDisciplinaParaBaixo = () => {
         if(dadoTransferido===false){
             dados.cor = '#172496'
             dados.semestre = semsatual + 1;
             novoDado['sems' + (semsatual+1)].push(dados);
+            dadoTransferido=true;
+            armazenaDependencias();
+        }
+        if (dadoTransferido===true){
+            novoDado['sems'+semsatual].splice(indexDado, 1);
+            setDados(novoDado);
+        }
+    }
+
+    const transfereDisciplinaParaCima = () => {
+        if(dadoTransferido===false){
+            dados.cor = '#172496'
+            dados.semestre = semsatual - 1;
+            novoDado['sems' + (semsatual-1)].push(dados);
             dadoTransferido=true;
             armazenaDependencias();
         }
@@ -31,25 +45,28 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
 
     const armazenaDependencias=()=>{
         console.log("chamou a função armazenaDependencias");
-        let discdep=[]
-        console.log({ novoDado })
+        let discdep=[];
+        console.log({ novoDado });
         
         // const pegaDiscs=Object.values(novoDado);
         console.log('A disciplina transferida foi: ');
         console.log({
             dados
-        })
+        });
 
         let codTransferido = dados.codigo;
 
 
         //for (let semestreVerificar = 0; semestreVerificar < 10; semestreVerificar++){
-        let semestreVerificar = dados.semestre
+        let semestreVerificar = dados.semestre;
 
         const novoSemestre = novoDado['sems' + (semestreVerificar)];
         console.log({
             novoSemestre
-        })
+        });
+
+        // console.log(`${semestreVerificar} < ${dados['sems'+semsatual][indexDado].semestre}`);
+        // let disciplinaAdiantada = semestreVerificar < dados['sems'+semsatual][indexDado].semestre;
 
         novoSemestre.forEach(disc => {
             if (disc.dependencia.includes(codTransferido)) {
@@ -58,12 +75,12 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
                 codTransferido = disc.codigo; // PODE TER UM ARRAY DE DEPENDENCIAS
                 
             }
-        })
+        });
 
         
         //}
         
-        setDados(novoDado);
+        // setDados(novoDado);
 
     }
 
@@ -78,7 +95,8 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
         <>
             <div className={styles.DisciplinaDiv} style={{backgroundColor: dados?.cor ? dados.cor : '#172496'}} id={'disc'+dados.codigo}>
                 <h4>{dados.nome}</h4>    
-                <p onClick={() => transfereDisciplina()}><AiOutlineArrowDown/></p>
+                <button onClick={() => transfereDisciplinaParaBaixo()}><AiOutlineArrowDown/></button>
+                <button onClick={() => transfereDisciplinaParaCima()}><AiOutlineArrowUp/></button>
             </div>  
         </>
     )
