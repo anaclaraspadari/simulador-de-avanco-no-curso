@@ -44,27 +44,35 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
     })
 
     const validaDependencias=()=>{
-        console.log("chamou a função validaDependencias");
-        let listasems=[];
-        let listadiscs=[];
-        console.log({ novoDado });
+        // console.log("chamou a função validaDependencias");
+        // console.log({ novoDado });
         
-        // const pegaDiscs=Object.values(novoDado);
-        console.log('A disciplina transferida foi: ');
-        console.log({
-            dados
-        });
+        // // const pegaDiscs=Object.values(novoDado);
+        // console.log('A disciplina transferida foi: ');
+        // console.log({
+        //     dados
+        // });
 
 
         const novoSemestre = novoDado['sems' + (semsatual+1)];
-        console.log({
-            novoSemestre
-        });
+        // console.log({
+        //     novoSemestre
+        // });
+
+        
+
+        
 
         let codTransferido = dados.codigo;
+        
+        // let depende=novoSemestre.filter(novosems=>novosems.dependencia.includes(codTransferido));
+        // console.log('depende');
+        // console.log(depende);
+
+
+
         novoSemestre.forEach(disc => {
-            console.log("dependencias de "+disc.nome);
-            console.log(disc.dependencia);
+            console.log("dependencias");
             if (disc.dependencia.includes(codTransferido)) {
                 //console.log('DISC ' +disc.nome + ' depende da disciplina alterada');
                 disc.cor = 'red';
