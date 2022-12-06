@@ -19,3 +19,11 @@
     min-height: 80px;
     background-color: #172496;
 }
+
+.transfereDisc{
+    background-color: #172496;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}

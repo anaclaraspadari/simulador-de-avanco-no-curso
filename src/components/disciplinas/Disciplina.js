@@ -121,8 +121,8 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
         <>
             <div className={styles.DisciplinaDiv} style={{backgroundColor: dados?.cor ? dados.cor : '#172496'}} id={'disc'+dados.codigo}>
                 <h4>{dados.nome}</h4>    
-                <button onClick={() => transfereDisciplinaParaBaixo()}><AiOutlineArrowDown/></button>
-                <button onClick={() => transfereDisciplinaParaCima()}><AiOutlineArrowUp/></button>
+                <button className={styles.transfereDisc} style={{backgroundColor: dados?.cor ? dados.cor : '#172496'}} onClick={() => transfereDisciplinaParaBaixo()}><AiOutlineArrowDown/></button>
+                <button className={styles.transfereDisc} style={{backgroundColor: dados?.cor ? dados.cor : '#172496'}} onClick={() => transfereDisciplinaParaCima()}><AiOutlineArrowUp/></button>
             </div>  
         </>
     )
