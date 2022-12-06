@@ -16,7 +16,7 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
             dados.semestre = semsatual + 1;
             novoDado['sems' + (semsatual+1)].push(dados);
             dadoTransferido=true;
-            armazenaDependencias();
+            validaDependencias();
         }
         if (dadoTransferido===true){
             novoDado['sems'+semsatual].splice(indexDado, 1);
@@ -30,7 +30,7 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
             dados.semestre = semsatual - 1;
             novoDado['sems' + (semsatual-1)].push(dados);
             dadoTransferido=true;
-            armazenaDependencias();
+            validaDependencias();
         }
         if (dadoTransferido===true){
             novoDado['sems'+semsatual].splice(indexDado, 1);
@@ -43,9 +43,10 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
         indexDado=novoDado['sems'+semsatual].indexOf(dados);
     })
 
-    const armazenaDependencias=()=>{
-        console.log("chamou a função armazenaDependencias");
-        let discdep=[];
+    const validaDependencias=()=>{
+        console.log("chamou a função validaDependencias");
+        let listasems=[];
+        let listadiscs=[];
         console.log({ novoDado });
         
         // const pegaDiscs=Object.values(novoDado);
@@ -56,15 +57,25 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
 
         
 
-        for (let semestreVerificar = 0; semestreVerificar < 10; semestreVerificar++){
-            
-            // console.log("semestreVerificar:");
-            // console.log(semestreVerificar);
+        for(let i=0;i<Object.keys(novoDado).length;i++){
+            for(let j=0; j<Object.values(novoDado['sems'+i]).length;j++){
+                listadiscs.push(j);
+            }
+        }
+
+        // console.log("listasdiscs");
+        // console.log(listadiscs);
+
+        let ndiscs=listadiscs.length-1;
+        //console.log("ndiscs: "+ndiscs);
+
+        
+        for (let semestreVerificar = 0; semestreVerificar < Object.keys(novoDado).length; semestreVerificar++){
 
             const novoSemestre = novoDado['sems' + (semestreVerificar)];
-            console.log({
-                novoSemestre
-            });
+            // console.log({
+            //     novoSemestre
+            // });
 
             // console.log("novoSemestre[0].dependencia");
             // console.log(novoSemestre[0].dependencia);
@@ -76,16 +87,23 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
             // console.log(`${semestreVerificar} < ${dados['sems'+semsatual][indexDado].semestre}`);
             // let disciplinaAdiantada = semestreVerificar < dados['sems'+semsatual][indexDado].semestre;
 
-            let codTransferido = dados.codigo;
+            
 
-            novoSemestre.forEach(disc => {
-                if (disc.dependencia.includes(codTransferido)) {
-                    console.log('DISC ' +disc.nome + ' depende da disciplina alterada');
-                    disc.cor = 'red';
-                    codTransferido = disc.codigo; // PODE TER UM ARRAY DE DEPENDENCIAS
-                    
-                }
-            });
+            
+            for(let i=0;i<Object.values(novoSemestre).length;i++){
+                // console.log("Object.values(novoSemestre)[i]")
+                // console.log(Object.values(novoSemestre)[i]);
+                let codTransferido = dados.codigo;
+                novoSemestre.forEach(disc => {
+                    // console.log("dependencias de "+disc.nome);
+                    // console.log(disc.dependencia);
+                    if (disc.dependencia.includes(codTransferido)) {
+                        //console.log('DISC ' +disc.nome + ' depende da disciplina alterada');
+                        disc.cor = 'red';
+                        codTransferido = disc.codigo; // PODE TER UM ARRAY DE DEPENDENCIAS
+                    }
+                });
+            }
         }
         
         // setDados(novoDado);
