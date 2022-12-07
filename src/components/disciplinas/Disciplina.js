@@ -41,33 +41,10 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
         indexDado=novoDado['sems'+semsatual].indexOf(dados);
     })
 
-    useEffect(() => {
-        console.log("USE EFFECT DADOS!");
-        validaDependencias();
-    }, [dados]);    // toda vez que o dados mudar, ele executa o useEffect
-                    // consequentemente chama o valida dependencias
+    
 
     const validaDependencias=()=>{
         console.log("chamou a função validaDependencias");
-        // console.log({ novoDado });
-        
-        // // const pegaDiscs=Object.values(novoDado);
-        // console.log('A disciplina transferida foi: ');
-        // console.log({
-        //     dados
-        // });
-
-        //const novoSemestre = novoDado['sems' + (semsatual+1)];
-        // console.log({
-        //     novoSemestre
-        // });
-
-
-        // let codTransferido = dados.codigo;
-        
-        // let depende=novoSemestre.filter(novosems=>novosems.dependencia.includes(codTransferido));
-        // console.log('depende');
-        // console.log(depende);
 
         /*
         novoSemestre.forEach(disc => {
@@ -92,7 +69,7 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
                 
                 // verificar a lista de dependencias
                 let todasAntes = true;
-                console.log('AQUUIII')
+                //console.log('AQUUIII')
 
                 for (let dl = 0; dl < disciplina.dependencia.length; dl++){
 
@@ -103,7 +80,7 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
                         const semestrePosterior = dadosCompletos[chavep];
 
                         for (let discSemestre = 0; discSemestre < semestrePosterior.length; discSemestre++) {
-                            let temDependenciaParaFrente = semestrePosterior[discSemestre].codigo  == dependencia;
+                            let temDependenciaParaFrente = semestrePosterior[discSemestre].codigo  === dependencia;
                             if (temDependenciaParaFrente) {
                                 todasAntes = false;
                             }
@@ -112,20 +89,20 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
                     }
                 }
 
-                if (todasAntes == false) {
+                if (todasAntes === false) {
                     console.log('Resultado para a disciplina ')
                     console.log(disciplina.nome + '  ' +  todasAntes);
+                    disciplina.cor = 'red';
                 }
             }
         }
     }
 
-
-
-    useEffect(()=>{
-        setDependencias({nomedisc: undefined, discdependencias: []});
-    },[]);
-
+    useEffect(() => {
+        //console.log("USE EFFECT DADOS!");
+        validaDependencias();
+    }, [dados]);    // toda vez que o dados mudar, ele executa o useEffect
+                    // consequentemente chama o valida dependencias
 
     return(
         <>
