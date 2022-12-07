@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './DiscPorSemestre.module.css';
-import {AiOutlineArrowDown, AiOutlineArrowUp} from 'react-icons/ai'
+import {AiOutlineArrowDown, AiOutlineArrowUp, AiOutlineConsoleSql} from 'react-icons/ai'
 
 function Disciplina({dados, semsatual, dadosCompletos, setDados}){
 
@@ -16,7 +16,6 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
             dados.semestre = semsatual + 1;
             novoDado['sems' + (semsatual+1)].push(dados);
             dadoTransferido=true;
-            validaDependencias();
         }
         if (dadoTransferido===true){
             novoDado['sems'+semsatual].splice(indexDado, 1);
@@ -30,7 +29,6 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
             dados.semestre = semsatual - 1;
             novoDado['sems' + (semsatual-1)].push(dados);
             dadoTransferido=true;
-            validaDependencias();
         }
         if (dadoTransferido===true){
             novoDado['sems'+semsatual].splice(indexDado, 1);
@@ -43,8 +41,14 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
         indexDado=novoDado['sems'+semsatual].indexOf(dados);
     })
 
+    useEffect(() => {
+        console.log("USE EFFECT DADOS!");
+        validaDependencias();
+    }, [dados]);    // toda vez que o dados mudar, ele executa o useEffect
+                    // consequentemente chama o valida dependencias
+
     const validaDependencias=()=>{
-        // console.log("chamou a função validaDependencias");
+        console.log("chamou a função validaDependencias");
         // console.log({ novoDado });
         
         // // const pegaDiscs=Object.values(novoDado);
@@ -53,33 +57,67 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
         //     dados
         // });
 
-
-        const novoSemestre = novoDado['sems' + (semsatual+1)];
+        //const novoSemestre = novoDado['sems' + (semsatual+1)];
         // console.log({
         //     novoSemestre
         // });
 
-        
 
-        
-
-        let codTransferido = dados.codigo;
+        // let codTransferido = dados.codigo;
         
         // let depende=novoSemestre.filter(novosems=>novosems.dependencia.includes(codTransferido));
         // console.log('depende');
         // console.log(depende);
 
-
-
+        /*
         novoSemestre.forEach(disc => {
             console.log("dependencias");
             if (disc.dependencia.includes(codTransferido)) {
                 //console.log('DISC ' +disc.nome + ' depende da disciplina alterada');
-                disc.cor = 'red';
-                codTransferido = disc.codigo; // PODE TER UM ARRAY DE DEPENDENCIAS
+                //disc.cor = 'red';
+                //codTransferido = disc.codigo; // PODE TER UM ARRAY DE DEPENDENCIAS
             }
         });
+        */
+       
+        // cada um dos semestres dos dadosCompletos
+        for(let i=0;i<Object.keys(dadosCompletos).length;i++){
+            const chave = Object.keys(dadosCompletos)[i];
+            const semestre = dadosCompletos[chave];
+            
+            // passando por cada uma das disciplinas do semestre atual
+            for (let d = 0; d < semestre.length; d++) {
+                
+                const disciplina = semestre[d];
+                
+                // verificar a lista de dependencias
+                let todasAntes = true;
+                console.log('AQUUIII')
 
+                for (let dl = 0; dl < disciplina.dependencia.length; dl++){
+
+                    const dependencia = disciplina.dependencia[dl];
+
+                    for(let sp = i; sp < Object.keys(dadosCompletos).length; sp++){
+                        const chavep = Object.keys(dadosCompletos)[sp];
+                        const semestrePosterior = dadosCompletos[chavep];
+
+                        for (let discSemestre = 0; discSemestre < semestrePosterior.length; discSemestre++) {
+                            let temDependenciaParaFrente = semestrePosterior[discSemestre].codigo  == dependencia;
+                            if (temDependenciaParaFrente) {
+                                todasAntes = false;
+                            }
+                        }
+
+                    }
+                }
+
+                if (todasAntes == false) {
+                    console.log('Resultado para a disciplina ')
+                    console.log(disciplina.nome + '  ' +  todasAntes);
+                }
+            }
+        }
     }
 
 
@@ -100,4 +138,4 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados}){
     )
 }
 
-export default Disciplina;
+export default Disciplina; 
