@@ -1,0 +1,406 @@
+{
+    "sems0":[
+        {
+            "nome": "Cálculo 1",
+            "codigo": "11",
+            "semestre":1,
+            "dependencia":[]
+        },
+        {
+            "nome": "Álgebra Linear e Geometria Analítica 1",
+            "codigo": "12",
+            "semestre": 1,
+            "dependencia":[]
+        },
+        {
+            "nome": "Desenho Técnico e Geometria Descritiva 1",
+            "codigo": "13",
+            "semestre": 1,
+            "dependencia":[]
+        },
+        {
+            "nome": "Física Geral e Experimental 1",
+            "codigo": "14",
+            "semestre": 1,
+            "dependencia":[]
+        },
+        {
+            "nome": "Química Geral",
+            "codigo": "15",
+            "semestre": 1,
+            "dependencia":[]
+        },
+        {
+            "nome": "Introdução à Eng. Mecânica",
+            "codigo": "16",
+            "semestre": 1,
+            "dependencia":[]
+        }
+    ],
+    "sems1":[
+        {
+            "nome": "Cálculo 2",
+            "codigo": "21",
+            "semestre":2,
+            "dependencia":["11"]
+        },
+        {
+            "nome": "Álgebra Linear e Geometria Analítica 2",
+            "codigo": "22",
+            "semestre": 2,
+            "dependencia":["12"]
+        },
+        {
+            "nome": "Introdução à Ciência e Tecnologia dos Materiais",
+            "codigo": "23",
+            "semestre": 2,
+            "dependencia":["15"]
+        },
+        {
+            "nome": "Física Geral e Experimental 2",
+            "codigo": "24",
+            "semestre": 2,
+            "dependencia":["14"]
+        },
+        {
+            "nome": "Desenho Mecânico Aux. por Computador",
+            "codigo": "25",
+            "semestre": 2,
+            "dependencia":["13"]
+        },
+        {
+            "nome": "Metodologia Científica",
+            "codigo": "26",
+            "semestre": 2,
+            "dependencia":["16"]
+        }
+    ],
+    "sems2":[
+        {
+            "nome": "Cálculo 3",
+            "codigo": "31",
+            "semestre":3,
+            "dependencia":["11","21"]
+        },
+        {
+            "nome": "Mecânica Geral e Resistência dos Materiais",
+            "codigo": "32",
+            "semestre": 3,
+            "dependencia":["11"]
+        },
+        {
+            "nome": "Algoritimos e Programação",
+            "codigo": "33",
+            "semestre": 3,
+            "dependencia":["16"]
+        },
+        {
+            "nome": "Eletromagnetismo",
+            "codigo": "34",
+            "semestre": 3,
+            "dependencia":["14","24"]
+        },
+        {
+            "nome": "Probabilidade e Estatística Aplicada",
+            "codigo": "35",
+            "semestre": 3,
+            "dependencia":["16"]
+        }
+    ],
+    "sems3":[
+        {
+            "nome": "Cálculo 4",
+            "codigo": "41",
+            "semestre":4,
+            "dependencia":["11","21","31"]
+        },
+        {
+            "nome": "Materiais de Construção Mecânica e Ensaios de Materiais",
+            "codigo": "42",
+            "semestre": 4,
+            "dependencia":["11","15","23","32"]
+        },
+        {
+            "nome": "Eletrotécnica",
+            "codigo": "43",
+            "semestre": 4,
+            "dependencia":["14","24","34"]
+        },
+        {
+            "nome": "Sistemas e Processos Termodinânicos",
+            "codigo": "44",
+            "semestre": 4,
+            "dependencia":["11","14","21","24","31"]
+        },
+        {
+            "nome": "Gestão Ambiental aplicada à Processos Industriais",
+            "codigo": "45",
+            "semestre": 4,
+            "dependencia":["16"]
+        },
+        {
+            "nome": "Métodos Numéricos",
+            "codigo": "46",
+            "semestre": 4,
+            "dependencia":["16","33"]
+        }
+    ],
+    "sems4":[
+        {
+            "nome": "Mecânica dos Flúidos",
+            "codigo": "51",
+            "semestre": 5,
+            "dependencia":["11","14","21","24","31","44"]
+        },
+        {
+            "nome": "Transferência de Calor",
+            "codigo": "52",
+            "semestre": 5,
+            "dependencia":["11","14","21","24","31","44"]
+        },
+        {
+            "nome": "Tecnologia de Soldagem 1",
+            "codigo": "53",
+            "semestre": 5,
+            "dependencia":["11","15","23","32","42"]
+        },
+        {
+            "nome": "Economia e Gestão de Processos Industriais",
+            "codigo": "54",
+            "semestre": 5,
+            "dependencia":["16"]
+        },
+        {
+            "nome": "Mecânica dos Sólidos 1",
+            "codigo": "55",
+            "semestre": 5,
+            "dependencia":["11","15","23","32","42"]
+        },
+        {
+            "nome": "Metrologia",
+            "codigo": "56",
+            "semestre": 5,
+            "dependencia":["16"]
+        },
+        {
+            "nome": "Fontes Alternativas e Renováveis de Energia",
+            "codigo": "57",
+            "semestre": 5,
+            "dependencia":["16","45"]
+        },
+        {
+            "nome": "Legislação e Ética Profissional",
+            "codigo": "58",
+            "semestre": 5,
+            "dependencia":["16"]
+        }
+    ],
+    "sems5":[
+        {
+            "nome": "Máquinas de Fluxo",
+            "codigo": "61",
+            "semestre": 6,
+            "dependencia":["11","14","21","24","31","44","51"]
+        },
+        {
+            "nome": "Trocadores de Calor",
+            "codigo": "62",
+            "semestre": 6,
+            "dependencia":["11","14","21","24","31","44","52"]
+        },
+        {
+            "nome": "Tecnologia de Soldagem 2",
+            "codigo": "63",
+            "semestre": 6,
+            "dependencia":["11","15","23","32","42","53"]
+        },
+        {
+            "nome": "Gestão de Qualidade na Indústria",
+            "codigo": "64",
+            "semestre": 6,
+            "dependencia":["16","54","58"]
+        },
+        {
+            "nome": "Mecânica dos Sólidos 2",
+            "codigo": "65",
+            "semestre": 6,
+            "dependencia":["11","15","23","32","42","55"]
+        },
+        {
+            "nome": "Instrumentação",
+            "codigo": "66",
+            "semestre": 6,
+            "dependencia":["16","56"]
+        },
+        {
+            "nome": "Cinemática dos Mecanismos",
+            "codigo": "67",
+            "semestre": 6,
+            "dependencia":["11","14","21"]
+        },
+        {
+            "nome": "Projeto Integrador",
+            "codigo": "68",
+            "semestre": 6,
+            "dependencia":["11","14","15","16","21","23","24","31","32","44","42","45"]
+        }
+    ],
+    "sems6":[
+        {
+            "nome": "Refrigeração Industrial 1",
+            "codigo": "71",
+            "semestre": 7,
+            "dependencia":["11","14","21","24","31","44","51","52","61","62"]
+        },
+        {
+            "nome": "Disc. Optativa 1",
+            "codigo": "72",
+            "semestre": 7,
+            "dependencia":[]
+        },
+        {
+            "nome": "Elementos de Máquinas 1",
+            "codigo": "73",
+            "semestre": 7,
+            "dependencia":["11","15","23","32","42","55","65"]
+        },
+        {
+            "nome": "Utilidades Industriais 1",
+            "codigo": "74",
+            "semestre": 7,
+            "dependencia":["11","14","21","24","31","44","51","52","61","62"]
+        },
+        {
+            "nome": "Usinagem de Materiais 1",
+            "codigo": "75",
+            "semestre": 7,
+            "dependencia":["11","15","23","32","42","55","65"]
+        },
+        {
+            "nome": "Sistemas Hidráulicos e Pneumáticos",
+            "codigo": "76",
+            "semestre": 7,
+            "dependencia":["16","56","66"]
+        },
+        {
+            "nome": "Gestão de Pessoas",
+            "codigo": "77",
+            "semestre": 7,
+            "dependencia":["16","54","58","64"]
+        },
+        {
+            "nome": "Projeto Integrador",
+            "codigo": "78",
+            "semestre": 7,
+            "dependencia":["11","14","15","16","21","23","24","31","32","44","42","45","68"]
+        }
+    ],
+    "sems7":[
+        {
+            "nome": "Refrigeração Industrial 2",
+            "codigo": "81",
+            "semestre": 8,
+            "dependencia":["11","14","21","24","31","44","51","52","61","62","71"]
+        },
+        {
+            "nome": "Disc. Optativa 2",
+            "codigo": "82",
+            "semestre": 8,
+            "dependencia":[]
+        },
+        {
+            "nome": "Elementos de Máquinas 2",
+            "codigo": "83",
+            "semestre": 8,
+            "dependencia":["11","15","23","32","42","55","65","73"]
+        },
+        {
+            "nome": "Utilidades Industriais 2",
+            "codigo": "84",
+            "semestre": 8,
+            "dependencia":["11","14","21","24","31","44","51","52","61","62","74"]
+        },
+        {
+            "nome": "Usinagem de Materiais 2",
+            "codigo": "85",
+            "semestre": 8,
+            "dependencia":["11","15","23","32","42","55","65","75"]
+        },
+        {
+            "nome": "Automação de Processos Industriais",
+            "codigo": "86",
+            "semestre": 8,
+            "dependencia":["16","56","66","76"]
+        },
+        {
+            "nome": "Dinâmica das Máquinas",
+            "codigo": "87",
+            "semestre": 8,
+            "dependencia":["11","15","21","23","31","32","42","55","65"]
+        },
+        {
+            "nome": "Segurança Industrial",
+            "codigo": "88",
+            "semestre": 8,
+            "dependencia":["16"]
+        }
+    ],
+    "sems8":[
+        {
+            "nome": "Ensaios Calométricos",
+            "codigo": "91",
+            "semestre": 9,
+            "dependencia":["11","14","21","24","31","44","51","52","61","62","71","74","81","84"]
+        },
+        {
+            "nome": "Motores de Combustão Interna",
+            "codigo": "92",
+            "semestre": 9,
+            "dependencia":["11","14","21","24","31","44"]
+        },
+        {
+            "nome": "Máquinas de Elevação e Transporte",
+            "codigo": "93",
+            "semestre": 9,
+            "dependencia":["11","15","23","32","42","55","65","73","83"]
+        },
+        {
+            "nome": "Sistemas de Ventilação e Climatização de Ambientes",
+            "codigo": "94",
+            "semestre": 9,
+            "dependencia":["11","14","21","24","31","44","51","52","61","62","71","81"]
+        },
+        {
+            "nome": "Conformação Mecânica",
+            "codigo": "95",
+            "semestre": 9,
+            "dependencia":["11","15","23","32","42","55","65"]
+        },
+        {
+            "nome": "Manutenção Industrial",
+            "codigo": "96",
+            "semestre": 9,
+            "dependencia":["11","15","21","23","31","32","42","55","65","87"]
+        },
+        {
+            "nome": "Disc. Optativa 3",
+            "codigo": "97",
+            "semestre": 9,
+            "dependencia":[]
+        }
+    ],
+    "sems9":[
+        {
+            "nome":"Estágio Curricular Obrigatório",
+            "codigo":"101",
+            "semestre":10,
+            "dependencia":["11","14","15","16","21","23","24","31","32","42","44","51","52","55","61","62","65","71","73","74","75","81","82","83","84","85","86","87","88"]
+        },
+        {
+            "nome":"TCC",
+            "codigo":"102",
+            "semestre":10,
+            "dependencia":["11","14","15","21","23","24","31","32","42","44","51","52","55","61","62","65","71","73","74","81","83","84","87","91","92","93","94","95","96","97"]
+        }
+    ]
+}
