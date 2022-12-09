@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Collapse, Alert} from '@mui/material';
 import './App.css';
 import DiscPorSemestre from './components/disciplinas/DiscPorSemestre';
-import Menu from './components/form/Menu';
+import Menu from './components/menu/Menu';
 import data from './data/Disciplinas.json';
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         <div className="App">
             {(transferida===true) &&
                 <Collapse in={alert}>
-                    <Alert severity='error' onClose={()=>{setAlert(false)}}>As disciplinas em vermelho dependem da aprovação na disciplina transferida</Alert>
+                    <Alert variant='filled' severity='error' onClose={()=>{setAlert(false)}}>As disciplinas em vermelho dependem da aprovação na disciplina transferida</Alert>
                 </Collapse>
             }
             <h1>Quando é que eu me formo?</h1>
