@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Collapse, Alert} from '@mui/material';
 import './App.css';
 import DiscPorSemestre from './components/disciplinas/DiscPorSemestre';
-import Form from './components/form/Form';
+import Menu from './components/form/Menu';
 import data from './data/Disciplinas.json';
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
                 </Collapse>
             }
             <h1>Quando é que eu me formo?</h1>
-            <Form 
+            <Menu 
                 fnAno={setAno}
                 fnSemestre={setSemestre}
             />

@@ -1,11 +1,11 @@
-import styles from './Form.module.css';
+import styles from './Menu.module.css';
 import AnoIngresso from './AnoIngresso';
 import SemsIngresso from './SemsIngresso';
 //import Button from './Button';
 
-function Form(props){
+function Menu(props){
     return(
-        <div className={styles.FormIngresso}>
+        <div className={styles.MenuIngresso}>
             
             <AnoIngresso trocaAno={props.fnAno} />
             <SemsIngresso trocaSems={props.fnSemestre}/>
@@ -13,4 +13,4 @@ function Form(props){
     )
 }
 
-export default Form
+export default Menu
