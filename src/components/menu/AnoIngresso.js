@@ -1,8 +1,13 @@
 import styles from './AnoIngresso.module.css';
+import data from '../../data/Ano.json'
 
 
 function AnoIngresso({anosvet, trocaAno}){
-    anosvet=[2015,2016,2017,2018,2019,2020,2021,2022]
+    anosvet=[]
+    for(let i=0;i<Object.keys(data).length;i++){
+        anosvet.push(Object.values(data)[i].ano);
+    }
+    console.log(anosvet)
     return(
         <div className={styles.AnoIngressoDiv}>
             <h3>Ano de Ingresso</h3>
