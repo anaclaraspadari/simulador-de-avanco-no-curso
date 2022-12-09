@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import {Collapse, Alert} from '@mui/material';
 import './App.css';
 import DiscPorSemestre from './components/disciplinas/DiscPorSemestre';
 import Form from './components/form/Form';
 import data from './data/Disciplinas.json';
 
-function App({contador}) {
+function App() {
 
     const [ano, setAno] = useState(null);
     const [sems, setSemestre] = useState(null);
     const [dadosEstudante, setDadosEstudante] = useState(data);
     const [loader, setLoader] = useState(false);
     const [discRed, setDiscRed] = useState([]);
-    
-
+    const [transferida, setTransferida]=useState(false);
+    const [alert, setAlert]=useState(true);
 
     const titulosdiv=[]
-    contador=10;
+    let contador=10;
     for(let i=0;i<contador;i++){
         titulosdiv.push(i);
     }
@@ -27,11 +28,13 @@ function App({contador}) {
         setLoader(false);
     }, [dadosEstudante])
 
-    
-
     return (
         <div className="App">
-
+            {(transferida===true) &&
+                <Collapse in={alert}>
+                    <Alert severity='error' onClose={()=>{setAlert(false)}}>As disciplinas em vermelho dependem da aprovação na disciplina transferida</Alert>
+                </Collapse>
+            }
             <h1>Quando é que eu me formo?</h1>
             <Form 
                 fnAno={setAno}
@@ -50,13 +53,13 @@ function App({contador}) {
                             dados={dadosEstudante} 
                             setDados={setDadosEstudante} 
                             discRed = {discRed}
-                            setDiscRed = { setDiscRed }        
+                            setDiscRed = { setDiscRed }
+                            transferida={transferida}        
+                            setTransferida={setTransferida}
                         />  
                     </>
                 ))
             }
-            
-            
         </div>
     );
 }

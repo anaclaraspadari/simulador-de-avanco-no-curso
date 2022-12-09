@@ -2,13 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import styles from './DiscPorSemestre.module.css';
 import {AiOutlineArrowDown, AiOutlineArrowUp, AiOutlineConsoleSql} from 'react-icons/ai'
 
-function Disciplina({dados, semsatual, dadosCompletos, setDados, discRed, setDiscRed }){
+function Disciplina({dados, semsatual, dadosCompletos, setDados, discRed, setDiscRed, transferida, setTransferida }){
 
     const novoDado = { ...dadosCompletos };
     let dadoTransferido=false;
     let indexDado=novoDado['sems'+semsatual].indexOf(dados);
-    const [dependencias, setDependencias]=useState({});
-    const [discTransferida, setDiscTransferida] = useState(null);
 
     const transfereDisciplinaParaBaixo = () => {
         if(dadoTransferido===false){
@@ -20,6 +18,7 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados, discRed, setDis
         if (dadoTransferido===true){
             novoDado['sems'+semsatual].splice(indexDado, 1);
             setDados(novoDado);
+            setTransferida(dadoTransferido);
         }
     }
 
@@ -47,17 +46,6 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados, discRed, setDis
         console.log("chamou a função validaDependencias");
 
         const emVermelho = [];
-
-        /*
-        novoSemestre.forEach(disc => {
-            console.log("dependencias");
-            if (disc.dependencia.includes(codTransferido)) {
-                //console.log('DISC ' +disc.nome + ' depende da disciplina alterada');
-                //disc.cor = 'red';
-                //codTransferido = disc.codigo; // PODE TER UM ARRAY DE DEPENDENCIAS
-            }
-        });
-        */
        
         const copiaDados = JSON.parse(JSON.stringify(dadosCompletos));
 
@@ -96,9 +84,7 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados, discRed, setDis
                 if (todasAntes === false) {
                     console.log('Resultado para a disciplina ')
                     console.log(disciplina.nome + '  ' +  todasAntes);
-                    // disciplina.cor = 'red';
                     emVermelho.push(disciplina.codigo)
-                    // setDados(copiaDados)
                 }
             }
         }
@@ -116,12 +102,14 @@ function Disciplina({dados, semsatual, dadosCompletos, setDados, discRed, setDis
     }, [dados]);    // toda vez que o dados mudar, ele executa o useEffect
                     // consequentemente chama o valida dependencias
 
+    
+
     return(
         <>
             <div className={styles.DisciplinaDiv} style={{backgroundColor: discRed.includes(dados.codigo) ? 'red' : '#172496'}} id={'disc'+dados.codigo}>
                 <h4>{dados.nome}</h4>    
-                <button className={styles.transfereDisc} style={{backgroundColor: dados?.cor ? dados.cor : '#172496'}} onClick={() => transfereDisciplinaParaBaixo()}><AiOutlineArrowDown/></button>
-                <button className={styles.transfereDisc} style={{backgroundColor: dados?.cor ? dados.cor : '#172496'}} onClick={() => transfereDisciplinaParaCima()}><AiOutlineArrowUp/></button>
+                <button className={styles.transfereDisc} style={{backgroundColor: discRed.includes(dados.codigo) ? 'red' : '#172496'}} onClick={() => transfereDisciplinaParaBaixo()}><AiOutlineArrowDown/></button>
+                <button className={styles.transfereDisc} style={{backgroundColor: discRed.includes(dados.codigo) ? 'red' : '#172496'}} onClick={() => transfereDisciplinaParaCima()}><AiOutlineArrowUp/></button>
             </div>  
         </>
     )

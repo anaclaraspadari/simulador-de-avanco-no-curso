@@ -8,16 +8,26 @@
     grid-template-columns: repeat(5, 1fr);
     align-items: center;
     justify-content: center;
-    height: 40vh;
+    height: 30vh;
+    flex-direction: column;
 }
 
 .DisciplinaDiv{
     border-radius: 10px;
     padding: 1em;
     margin-left: 20px;
-    min-width: 150px;
-    min-height: 80px;
+    min-width: 100px;
+    min-height: 60px;
     background-color: #172496;
+    grid-auto-flow: row;
+    flex-direction: column;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 600px){
+    .DisciplinaDiv{
+        flex-direction: column;
+    }
 }
 
 .transfereDisc{
